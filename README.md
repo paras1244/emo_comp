@@ -34,4 +34,4 @@ related_path : Latitude Test.postman_collection.json
 
 
 # Steps To Set-up The Project 
-git clone https://github.com/paras1244/emo_comp.git
+git clone https://github.com/paras1244/emp_comp.git
