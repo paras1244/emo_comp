@@ -4,6 +4,8 @@ from .models import Company, Departments, Employee
 
 
 class CompanySerializer(serializers.ModelSerializer):
+    total_dep = serializers.SerializerMethodField()
+    total_emp = serializers.SerializerMethodField()
     class Meta:
         model = Company
         fields = [
@@ -12,11 +14,21 @@ class CompanySerializer(serializers.ModelSerializer):
             "city",
             "created_at",
             "updated_at",
-            "dep_company",
-            "employee_company",
+            "dep_company",                     # related_name argument
+            "employee_company",                 # related_name argument
+            "total_dep",
+            "total_emp",
         ]
         depth = 1
+        
+    def get_total_dep(self, object):
+        return object.dep_company.all().count()                              # Using Related name
+        # return Departments.objects.filter(company=object).count()              # With direct filteting on Employee
 
+    def get_total_emp(self, object):
+        # return object.employee_company.all().count()                      # Using Related name
+        return Employee.objects.filter(company=object).count()              # With direct filteting on Employee
+    
 
 # # TODO : ALSO WE CAN DO LIKE THIS
 # class CompanySerializer(serializers.ModelSerializer):

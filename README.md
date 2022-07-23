@@ -18,7 +18,7 @@ I have created Serializers to Get Details of Employee Directly with Company Deta
 2) using Simpe "serializers.SerializerMethodField" Method
 
 # API : Get All Company and Relevent Department-Employee Details.
-http://127.0.0.1:8000/company/*
+http://127.0.0.1:8000/company/
 
 # Retrive Company Details Along With Department-Employee
 http://127.0.0.1:8000/company/1/
